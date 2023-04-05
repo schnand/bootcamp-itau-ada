@@ -1,0 +1,25 @@
+name: Build frontend app and deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - frontend
+
+jobs:
+  BuildAndDeploy:
+    name: Build frontend
+    runs-on: self-hosted
+    steps:
+#      - uses: actions/checkout@v3
+      - run: sudo apt-get update && sudo apt-get -y install npm
+      - run: sudo npm install -g @angular/cli
+      - run: docker build -t frontend .
+
+  TestDocker:
+    name: Test frontend
+    runs-on: self-hosted
+    steps:
+#      - uses: actions/checkout@v3
+      - run: ng test
+    needs: [BuildAndDeploy]
