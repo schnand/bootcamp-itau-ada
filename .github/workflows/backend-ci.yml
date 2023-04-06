@@ -1,0 +1,33 @@
+name: Build backend app and deploy
+
+#defaults:
+#  run:
+#    working-directory: "frontend/"
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - backend 
+
+jobs:
+  BuildAndDeploy:
+    name: Build backend
+    runs-on: self-hosted
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: dependencias
+      run: |
+          sudo apt-get update && sudo apt-get -y install maven
+          sudo npm install -g @angular/cli
+    
+    - name: teste 
+      run: |
+          mvn clean test
+         
+    - name: build frontend
+      run: |
+          mvn clean package
+          cd backend
+          docker build . -t backend 
