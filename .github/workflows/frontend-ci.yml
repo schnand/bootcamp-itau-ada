@@ -21,7 +21,7 @@ jobs:
       run: |
           sudo apt-get update && sudo apt-get -y install npm
           sudo npm install -g @angular/cli
-          docker build -t frontend .
+          docker build -t frontend https://github.com/schnand/bootcamp-itau-ada/tree/main/frontend
 
     - name: Test frontend
       run: |
