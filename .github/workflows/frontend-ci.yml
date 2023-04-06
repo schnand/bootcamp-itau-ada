@@ -17,13 +17,17 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     
-    - name: teste frontend
+    - name: dependencias
       run: |
           sudo apt-get update && sudo apt-get -y install npm
           sudo npm install -g @angular/cli
           sudo npm install -g node@16.13.0
-          ng test
+         
     
+    - name: teste 
+      run: |
+          ng test
+         
     - name: build frontend
       run: |
           cd frontend
