@@ -20,7 +20,6 @@ jobs:
     - name: dependencias
       run: |
           sudo apt-get update && sudo apt-get -y install maven
-          sudo npm install -g @angular/cli
     
     - name: teste 
       run: |
