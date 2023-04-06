@@ -24,9 +24,12 @@ jobs:
     - name: teste 
       run: |
           mvn clean test
+          
+    - name: package
+      run: |
+          mvn clean package
          
     - name: build frontend
       run: |
-          mvn clean package
           cd backend
           docker build . -t backend 
