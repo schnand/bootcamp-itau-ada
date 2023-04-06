@@ -9,8 +9,8 @@ on:
   push:
     branches:
       - frontend
-    paths:
-    - 'frontend/**'  
+  #  paths:
+   # - 'frontend/**'  
 
 jobs:
   BuildAndDeploy:
