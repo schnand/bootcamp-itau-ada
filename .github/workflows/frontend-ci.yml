@@ -19,7 +19,7 @@ jobs:
     
     - name: Update Node.js
       run: |
-        sudo apt-get update -y nodejs
+        sudo apt-get install -y nodejs
     
     - name: test aplicacao
       run: |
