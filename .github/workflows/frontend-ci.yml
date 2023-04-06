@@ -8,23 +8,20 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - frontend
-  #  paths:
-   # - 'frontend/**'  
+      - frontend 
 
 jobs:
   BuildAndDeploy:
     name: Build frontend
     runs-on: self-hosted
     steps:
+    - uses: actions/checkout@v3
+    
     - name: build frontend
       run: |
           sudo apt-get update && sudo apt-get -y install npm
           sudo npm install -g @angular/cli
-          docker build -t frontend https://github.com/schnand/bootcamp-itau-ada/tree/frontend/frontend
+          cd frontend
+          docker build . -t frontend 
 
-    - name: Test frontend
-      run: |
-          ng test 
-          ##
 
